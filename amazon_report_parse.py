@@ -131,7 +131,7 @@ def parse_amazon_report(filepath=None, output_file=None):
             output_file = sys.argv[2]
 
     # create a workbook and worksheet
-    wb = load_workbook(file_path)
+    wb = load_workbook(filepath)
     ws = wb.active
 
     # extract highlighted cell coordinates

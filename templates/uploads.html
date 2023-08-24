@@ -31,28 +31,7 @@
                     <input type="file" class="file-input" id="customFile" name="file">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 mb-2">
-                            <label for="groupColumnSelect"><strong>Group By:</strong></label>
-                            <select class="form-control" name="groupColumn" id="groupColumnSelect">
-                                <option value="Customer">Customer</option>
-                                <option value="Sales Order" selected>Sales Order</option>
-                                <option value="SO Line Nbr" selected>SO Line Nbrr</option>
-                                <option value="Customer PO ID" selected>Customer PO ID</option>
-                                <option value="Item ID" selected>Item IDr</option>
-                                <option value="LineDescriptionr" selected>LineDescription</option>
-                                <option value="Book Date" selected>Book Date</option>
-                                <option value="Promise Date" selected>Promise Date</option>
-                                <option value="Required Date" selected>Required Date</option>
-                                <option value="Ship Window Close" selected>Ship Window Close</option>
-                                <option value="Required Qty" selected>Required Qty</option>
-                                <option value="Current Backlog" selected>Current Backlog</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+                <div class="mx-auto px-auto">
                     <button type="submit" class="btn btn-primary rounded mx-auto mt-3">Upload and Process</button>
                 </div>
             </form>
@@ -62,6 +41,13 @@
     <!-- Bootstrap JS and jQuery CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('customFile').addEventListener('change', function (e) {
+            var fileName = document.getElementById("customFile").files[0].name;
+            var nextSibling = e.target.nextElementSibling
+            nextSibling.innerText = fileName
+        })
+    </script>
 </body>
 
 </html>
