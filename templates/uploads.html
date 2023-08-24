@@ -7,6 +7,24 @@
     <title>Upload File</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        window.addEventListener("load", () => {
+            const submitBtn = document.getElementById("submitBtn");
+            submitBtn.classList.add("btn-outline-primary");
+            submitBtn.classList.remove("btn-primary");
+            submitBtn.disabled = true;
+            const fileInput = document.querySelector(".file-input");
+            fileInput.addEventListener("change", (e) => {
+                submitBtn.classList.remove("btn-outline-primary");
+                submitBtn.classList.add("btn-primary");
+                submitBtn.disabled = false;
+                var fileName = document.getElementById("customFile").files[0].name;
+                var nextSibling = e.target.nextElementSibling
+                nextSibling.innerText = fileName
+            })
+        })
+
+    </script>
     <style>
         body {
             background-color: #f8f9fa;
@@ -22,32 +40,32 @@
     </style>
 </head>
 
-<body>
-    <h1 class="text-1lx text-center mt-5">CF_Excel_Processor</h1>
-    <div class="row">
-        <div class="col col-6 mx-auto my-3">
-            <form action="/" method="POST" enctype="multipart/form-data">
-                <div class="custom-file mb-3">
-                    <input type="file" class="file-input" id="customFile" name="file">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
-                </div>
-                <div class="mx-auto px-auto">
-                    <button type="submit" class="btn btn-primary rounded mx-auto mt-3">Upload and Process</button>
-                </div>
-            </form>
-
+<body class="container">
+    <div class="col">
+        <div class="title mb-3">
+            <h1 class="text-1lx text-center mt-5">CF Excel Processor</h1>
         </div>
+        <div class="row">
+            <div class="col col-6 mx-auto my-3">
+                <form action="/" method="POST" enctype="multipart/form-data" class="mx-6">
+                    <div class="custom-file mb-3">
+                        <input type="file" class="file-input" id="customFile" name="file">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <div class="row">
+                        <div class="mx-auto px-auto">
+                            <button type="submit" class="btn btn-primary rounded mx-auto mt-3" id="submitBtn">Upload and
+                                Process</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- Bootstrap JS and jQuery CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </div>
-    <!-- Bootstrap JS and jQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.getElementById('customFile').addEventListener('change', function (e) {
-            var fileName = document.getElementById("customFile").files[0].name;
-            var nextSibling = e.target.nextElementSibling
-            nextSibling.innerText = fileName
-        })
-    </script>
 </body>
 
 </html>
